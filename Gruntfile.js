@@ -1,7 +1,6 @@
 var fs = require('fs');
 
 module.exports = function(grunt) {
-	grunt.loadNpmTasks('grunt-bower-task');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-concat');
 	grunt.loadNpmTasks('grunt-contrib-clean');
@@ -13,7 +12,6 @@ module.exports = function(grunt) {
 
 	grunt.registerTask('configure', [
 		'clean:pre',
-		'bower:install',
 	]);
 
 	grunt.registerTask('compile', [
@@ -113,16 +111,6 @@ module.exports = function(grunt) {
 
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
-		bower: {
-			install: {
-				options: {
-					copy: false,
-					clean: false,
-					layout: 'byComponent',
-					action: 'install'
-				}
-			}
-		},
 		clean: {
 			pre: ['dist'],
 			post: ['**/*.tmp*']
@@ -197,13 +185,13 @@ module.exports = function(grunt) {
 				options: {stripBanners: false},
 				files: {
 					'dist/less/selectize.bootstrap2.tmp.less': [
-						'bower_components/bootstrap2/less/variables.less',
-						'bower_components/bootstrap2/less/mixins.less',
+						'node_modules/bootstrap/less/variables.less',
+						'node_modules/bootstrap/less/mixins.less',
 						'dist/less/selectize.bootstrap2.less'
 					],
 					'dist/less/selectize.bootstrap3.tmp.less': [
-						'bower_components/bootstrap3/less/variables.less',
-						'bower_components/bootstrap3/less/mixins/nav-divider.less',
+						'node_modules/bootstrap3/less/variables.less',
+						'node_modules/bootstrap3/less/mixins/nav-divider.less',
 						'dist/less/selectize.bootstrap3.less'
 					]
 				}
